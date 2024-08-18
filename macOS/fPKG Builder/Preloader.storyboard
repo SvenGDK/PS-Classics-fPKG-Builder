@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RgM-zw-Kyg">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="RhC-Y2-v22">
+            <objects>
+                <windowController id="RgM-zw-Kyg" sceneMemberID="viewController">
+                    <window key="window" title="PS Classics fPKG Builder for macOS [by SvenGDK]" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bKe-r2-B5n">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="gBb-NI-ZjB">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="RgM-zw-Kyg" id="V4I-jq-e5I"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="E2r-yS-ssk" kind="relationship" relationship="window.shadowedContentViewController" id="uVo-8X-puB"/>
+                    </connections>
+                </windowController>
+                <customObject id="siQ-VN-W1N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18" y="18"/>
+        </scene>
+        <!--Preloader View Controller-->
+        <scene sceneID="EBV-j7-AZH">
+            <objects>
+                <viewController id="E2r-yS-ssk" customClass="PreloaderViewController" customModule="fPKG_Builder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="dgd-yP-Q5T">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="fS8-oT-1Mi">
+                                <rect key="frame" x="48" y="121" width="384" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-oh-R2J">
+                                <rect key="frame" x="46" y="148" width="388" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Please wait until the fPKG Builder finished initializing" id="slo-vB-YAj">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DyG-lw-2YN">
+                                <rect key="frame" x="46" y="106" width="388" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="center" title="Checking ..." id="gX3-mg-cFx">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="LoadingProgressIndicator" destination="fS8-oT-1Mi" id="ezC-ki-YvN"/>
+                        <outlet property="LoadingStatusTextField" destination="DyG-lw-2YN" id="05b-c0-H9l"/>
+                    </connections>
+                </viewController>
+                <customObject id="ea9-8Z-f5x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="10"/>
+        </scene>
+    </scenes>
+</document>
