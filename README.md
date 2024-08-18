@@ -1,5 +1,5 @@
-# PS Classics fPKG Builder for macOS & Windows
-- Easily create PS1, PS2 & PSP game fake packages for the PS4 / PS5
+# PS Classics fPKG Builder
+- Easily create PS1, PS2 & PSP game fake packages for the PS4 / PS5 on macOS & Windows
 - Supports .BIN files (PS1) & .ISO files (PS2 & PSP)
 - Detects PS1 game protection and can apply the required patch
 - Automatic PS1 game TOC generation for games using CDDA music
