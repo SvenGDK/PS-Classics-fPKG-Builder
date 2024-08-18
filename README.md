@@ -8,6 +8,8 @@
 - Select up to 4 discs on PS1 & up to 5 discs on PS2
 
 ## Notes for macOS users
+- Runs on macOS 12.0 or newer
+  - Intel or Apple ARM
 - Wine runs under the hood to get the publishing tools working on macOS, this is why the archive size is way bigger for macOS.
   - This is experimental but works.
 - This is a portable app, if you want to move it into the 'Applications' folder then you have to move the entire extracted directory including its 'Tools' folder in 'Applications'.
