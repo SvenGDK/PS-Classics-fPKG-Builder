@@ -10,6 +10,7 @@
 ## Notes for macOS users
 - Wine runs under the hood to get the publishing tools working on macOS, this is why the archive size is way bigger for macOS.
   - This is experimental but works.
+- This is a portable app, if you want to move it into the 'Applications' folder then you have to move the entire extracted directory including its 'Tools' folder in 'Applications'.
 - You will need to add an exception when opening the app for the first time (CMD+Open) :
   - https://support.apple.com/en-gb/guide/mac-help/mh40616/mac
 
