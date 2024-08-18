@@ -20,7 +20,7 @@ PS Classics fPKG Builder uses the following tools from other developers:
 | --- | --- | --- |
 | `crc` | asahui | [https://gist.github.com/asahui/a6af64606a9476a40442274335f5feaf](https://gist.github.com/asahui/a6af64606a9476a40442274335f5feaf)
 | `Cue2toc` | Goatman13 | [https://github.com/Goatman13/Cue2toc](https://github.com/Goatman13/Cue2toc)
-| `pspdecrypt` | John-K & More | [https://theunarchiver.com/command-line](https://github.com/John-K/pspdecrypt)
+| `pspdecrypt` | John-K & More | [[https://theunarchiver.com/command-line](https://github.com/John-K/pspdecrypt)](https://github.com/John-K/pspdecrypt)
 | `sfo` | hippie68 | [https://github.com/hippie68/sfo](https://github.com/hippie68/sfo)
 | `unar` | The Unarchiver | [https://theunarchiver.com/command-line](https://theunarchiver.com/command-line)
 | `wine` | WineHQ | [https://www.winehq.org/](https://www.winehq.org/)
