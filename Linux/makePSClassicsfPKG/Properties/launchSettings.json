@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "WSL (Default)": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "makePSClassicsfPKG - Ubuntu": {
+      "commandName": "WSL2",
+      "distributionName": "Ubuntu"
+    },
+    "makePSClassicsfPKG - Debian": {
+      "commandName": "WSL2",
+      "distributionName": "Debian"
+    }
+  }
+}

@@ -1,0 +1,1301 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <PropertyGroup Label="Avalonia">
+    <AvaloniaXamlIlDebuggerLaunch>True</AvaloniaXamlIlDebuggerLaunch>
+    <PackageIcon>ps128.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <ApplicationIcon>psicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="psicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.3" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
+    <PackageReference Include="DiscUtils.Udf" Version="0.16.13" />
+    <PackageReference Include="MessageBox.Avalonia" Version="3.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LibOrbisPkg">
+      <HintPath>..\..\..\..\Desktop\Classics\PS2\LibOrbisPkg.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Tools\crc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\cue2toc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\libcrypt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\ps1ids.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\ps2ids.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\config-emu-ps4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\docs\revision.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\eboot.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\formatted.card">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\ee-cpr0-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\ee-gpr-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\ee-hwaddr.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\language.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\MipsInsn.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\pad-and-key.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\pad-connect-type.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\PadStick.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\sprite.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\lua_include\utils.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\ps2-emu-compiler.self">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\PS20220WD20050620.crack">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_discmap.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_module\libc.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_sys\icon0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_sys\param.sfo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_sys\pic1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Jak v2\sce_sys\shareparam.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\AIM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Analog-Stick-Center.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Analog-Stick-Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Analog-Stick-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Analog-Stick-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Analog-Stick-Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\arrow2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\arrow_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\arrow_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\checkmark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\consola.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair0_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair1_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair2_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair3_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\crosshair4_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DPad-Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DPad-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DPad-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DPad-UP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DS1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\DS4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\forbidden.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\fpd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\gamespec\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\GunCon-A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\GunCon-B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\GunCon-Trigger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\gunCon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\L&amp;R3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\L1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\L1R1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\L2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\L3R3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\ar-AR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\cs-CZ.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\da-DK.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\de-DE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\el-GR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\en-GB.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\en-US.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\es-ES.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\es-MX.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\fi-FI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\fr-CA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\fr-FR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\hu-HU.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\id-ID.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\it-IT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\ja-JP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\ko-KR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\nl-NL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\no-NO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\pl-PL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\pt-BR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\pt-PT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\ro-RO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\ru-RU.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\sv-SE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\th-TH.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\tr-TR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\uk-UA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\vi-VN.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\zh-CHS.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\localization\zh-CHT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Move.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\msdf\array.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\msdf\msdf-metrics.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon-A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon-B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon-I.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon-II.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGCon-L.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGCon-R.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon-Start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\neGcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\plus-cursor-circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\plus-cursor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\PS1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\PSPlus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\R1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\R2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\repeat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Browse.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\BROWSE_DOWN.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\BROWSE_DOWN_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\BROWSE_DOWN_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Browse_UP.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Browse_UP_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Browse_UP_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Browse_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\CloseWindow.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\CloseWindow2.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\CloseWindow_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\CloseWindow_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\OpenWindow.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\OpenWindow2.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\OpenWindow_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\OpenWindow_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Slider.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Slider_Left_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Slider_Left_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Slider_Right_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\Slider_Right_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideDown.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideDown_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideDown_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideUp.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideUp_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\SFX\TimelineSlideUp_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\start_select_controls_embedded_ps4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\start_select_controls_embedded_ps5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\start_select_controls_ps4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\start_select_controls_ps5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Touchpad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Touchpad_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\Touchpad_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_cross.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_dpad_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_dpad_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_l1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_r1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_square.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_touchpad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\common\ui_ps_triangle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\PS1HD\bios\SCPH5500.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\PS1HD\bios\SCPH5501.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\assets\PS1HD\bios\SCPH5502.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\config-title.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\eboot.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\package-ps4.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\revision.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_discmap.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_discmap_patch.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_module\libc.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_module\libSceNpToolkit2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\about\right.sprx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\icon0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\keystone">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\npbind.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\param.sfo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\pic1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\save_data.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\ps1hd\sce_sys\shareparam.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\AIM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Analog-Stick-Center.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Analog-Stick-Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Analog-Stick-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Analog-Stick-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Analog-Stick-Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\arrow_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\arrow_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\checkmark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\consola.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair0_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair1_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair2_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair3_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\crosshair4_256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DPad-Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DPad-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DPad-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DPad-UP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DS1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\DS4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\fpd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\gamespec\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\GunCon-A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\GunCon-B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\GunCon-Trigger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\gunCon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\L&amp;R3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\L1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\L1R1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\L2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\L3R3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\ar-AR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\cs-CZ.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\da-DK.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\de-DE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\el-GR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\en-GB.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\en-US.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\es-ES.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\es-MX.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\fi-FI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\fr-CA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\fr-FR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\hu-HU.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\id-ID.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\it-IT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\ja-JP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\ko-KR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\nl-NL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\no-NO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\pl-PL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\pt-BR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\pt-PT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\ro-RO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\ru-RU.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\sv-SE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\th-TH.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\tr-TR.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\uk-UA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\vi-VN.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\zh-CHS.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\localization\zh-CHT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Move.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\msdf\array.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\msdf\msdf-metrics.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon-A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon-B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon-I.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon-II.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGCon-L.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGCon-R.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon-Start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\neGcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\plus-cursor-circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\plus-cursor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\PS1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\PSPlus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\R1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\R2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\repeat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Browse.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\BROWSE_DOWN.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\BROWSE_DOWN_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\BROWSE_DOWN_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Browse_UP.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Browse_UP_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Browse_UP_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Browse_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\CloseWindow.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\CloseWindow2.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\CloseWindow_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\CloseWindow_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\OpenWindow.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\OpenWindow2.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\OpenWindow_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\OpenWindow_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Slider.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Slider_Left_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Slider_Left_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Slider_Right_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\Slider_Right_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideDown.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideDown_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideDown_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideUp.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideUp_VIB.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\SFX\TimelineSlideUp_VIB.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\start_select_controls_embedded_ps4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\start_select_controls_embedded_ps5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\start_select_controls_ps4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\start_select_controls_ps5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Touchpad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Touchpad_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\Touchpad_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_cross.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_dpad_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_dpad_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_l1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_r1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_square.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_touchpad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\common\ui_ps_triangle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\gb3s1518.bwfon">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\imagefont.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\jpn0.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\kr0.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn0.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn1.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn10.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn11.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn12.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn13.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn14.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn15.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn2.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn3.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn4.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn5.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn6.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn7.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn8.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\flash0\font\ltn9.pgf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP-Analog-Stick-Center.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP-Analog-Stick-Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP-Analog-Stick-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP-Analog-Stick-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP-Analog-Stick-Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_CIRCLE-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_DPad-DOWN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_DPad-LEFT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_DPad-RIGHT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_DPad-UP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_L-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_R-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_SELECT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_SQUARE-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_START.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_TRIANGLE-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\PSP_X-Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\assets\PSPHD\usermodule\libfont.lib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\config-title.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\eboot.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\package-ps4.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\revision.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_discmap.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_discmap_patch.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_module\libc.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_module\libSceNpToolkit2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\about\right.sprx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\icon0.dds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\icon0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\keystone">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\param.sfo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\pic1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\save_data.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\psphd\sce_sys\shareparam.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\config-emu-ps4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\docs\revision.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\eboot.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\formatted.card">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\lua_include\ee-cpr0-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\lua_include\ee-gpr-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\lua_include\ee-hwaddr.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\lua_include\language.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\lua_include\utils.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\ps2-emu-compiler.self">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\PS20220WD20050620.crack">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_discmap.plt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_module\libc.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_sys\icon0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_sys\param.sfo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_sys\pic1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\emus\Rogue v1\sce_sys\shareparam.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ext\di.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ext\libatrac9.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ext\sc.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ext\trp_compare_default.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\gengp4_app.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\gengp4_patch.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\ee-cpr0-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\ee-gpr-alias.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\ee-hwaddr.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\language.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\MipsInsn.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\pad-and-key.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\pad-connect-type.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\PadStick.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\sprite.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\lua_include\utils.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\orbis-pub-cmd-3.38.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ps2-configs\configs_lua.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ps2-configs\configs_ps3.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ps2-configs\configs_txt.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ps2-configs\ecc_check.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\PS4\ps2-configs\widescreen.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\pspdecrypt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\sfo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cache\" />
+    <Folder Include="Tools\PS4\emus\ps1hd\data\" />
+    <Folder Include="Tools\PS4\emus\psphd\data\" />
+    <Folder Include="Tools\PS4\ps2-configs\lua\" />
+    <Folder Include="Tools\PS4\ps2-configs\ps3\" />
+    <Folder Include="Tools\PS4\ps2-configs\txt\" />
+    <Folder Include="Tools\PS4\ps2-configs\widescreen\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\ps128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
