@@ -15,6 +15,20 @@
 - This is a portable app, if you want to move it into the 'Applications' folder then you have to move the entire extracted directory including its 'Tools' folder in 'Applications'.
 - You will need to add an exception when opening the app for the first time (CMD+Open) :
   - https://support.apple.com/en-gb/guide/mac-help/mh40616/mac
+ 
+## Notes for Linux users
+- Available as installable `.deb` file or portable `.tar.gz`
+- Use the portable version when using Debian
+- The portable build requires manual installation of following packages (if not installed yet) :
+    - `7zip` `binutils` `wine64` `winetricks`
+- When using Debian install `winehq-stable` instead of `wine64` & `winetricks`, additionally install the `vcrun2008` runtime in your wine prefix
+- Simply double-click on makePSClassicsfPKG to run the portable version
+
+#### Installation using .deb (Tested on Mint & Ubuntu only)
+- Install with `sudo apt install ./makePSClassicsfPKG_1.0.0_amd64.deb`
+- Set required folder permissions:
+  - `sudo chmod -R a+rwx /usr/lib/makePSClassicsfPKG/Cache`
+  - `sudo chmod -R a+rwx /usr/lib/makePSClassicsfPKG/Tools`
 
 PS Classics fPKG Builder uses the following tools from other developers:
 
